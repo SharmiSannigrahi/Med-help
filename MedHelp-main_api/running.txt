@@ -1,0 +1,4 @@
+start virtual env : med/scripts/activate
+runserver django:  python Manage.py runserver
+in another terminal inside the folder run first api in different port: uvicorn main:app --reload --port 8080
+in another terminal inside the folder run second api in different port: uvicorn main:app --reload --port 8090

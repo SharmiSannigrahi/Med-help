@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en" id="html" data-bs-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Med-Help - Your health prediction and analysis platform">
+    <title>Med-Help | Home</title>
+    <link rel="icon" href="/static/IMG/logo.png">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+      @media (max-width: 992px) {
+        .collapse {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+        }
+      }
+
+      @media (min-width: 992px) {
+        .collapse {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+        }
+        #options {
+          margin-left: 33%;
+        }
+      }
+
+      .active {
+        text-decoration: underline;
+        text-underline-offset: 25%;
+        pointer-events: none;
+        cursor: default;
+      }
+      
+      /* New Styles */
+      .hero-section {
+        background: linear-gradient(135deg,rgb(46, 168, 206) 0%, #2575fc 100%);
+        color: white;
+        padding: 4rem 0;
+        margin-bottom: 3rem;
+        border-radius: 0 0 20px 20px;
+      }
+      
+      .feature-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: none;
+        border-radius: 15px;
+        overflow: hidden;
+      }
+      
+      .feature-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      }
+      
+      .feature-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        color: #2575fc;
+      }
+      
+      .btn-primary {
+        background-color: #2575fc;
+        border: none;
+        padding: 0.5rem 1.5rem;
+        border-radius: 50px;
+        font-weight: 500;
+      }
+      
+      .btn-primary:hover {
+        background-color: #1a5dc8;
+      }
+      
+      .navbar {
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      }
+      
+      .card-img-top {
+        object-fit: cover;
+        height: 180px;
+      }
+      
+      .quote-card {
+        background: linear-gradient(135deg,rgb(56, 119, 8) 0%,rgb(124, 173, 252) 100%);
+        border: none;
+        border-radius: 15px;
+      }
+      
+      .footer-card {
+        border: none;
+        background-color: rgba(3, 3, 3, 0.03);
+      }
+      
+      .social-icon {
+        transition: transform 0.3s ease;
+      }
+      
+      .social-icon:hover {
+        transform: scale(1.2);
+      }
+      
+      .theme-toggle {
+        cursor: pointer;
+        transition: transform 0.3s ease;
+      }
+      
+      .theme-toggle:hover {
+        transform: scale(1.1);
+      }
+      
+      .features-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        padding: 0 2rem;
+      }
+      
+      @media (max-width: 768px) {
+        .hero-section {
+          padding: 2rem 0;
+        }
+        
+        .features-container {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var elem = document.documentElement;
+        var mod = document.getElementById("modeimg");
+        var email = document.getElementById("email-logo");
+        var github = document.getElementById("github-logo");
+        var linkedin = document.getElementById("linkedin-logo");
+
+        var userPreference = localStorage.getItem("modePreference");
+
+        if (userPreference) {
+          elem.dataset.bsTheme = userPreference;
+          mod.className = elem.dataset.bsTheme === "light" ? "bi bi-moon-fill" : "bi bi-brightness-high-fill";
+          mod.title = elem.dataset.bsTheme === "light" ? "Dark Mode" : "Light Mode";
+          email.src =
+            elem.dataset.bsTheme === "dark"
+              ? "/static/IMG/email-l.png"
+              : "/static/IMG/email.png";
+          github.src =
+            elem.dataset.bsTheme === "dark"
+              ? "/static/IMG/github-l.png"
+              : "/static/IMG/github.png";
+          linkedin.src =
+            elem.dataset.bsTheme === "dark"
+              ? "/static/IMG/linkedin-l.png"
+              : "/static/IMG/linkedin.png";
+        }
+      });
+
+      function toggleTheme() {
+        var elem = document.documentElement;
+        var mod = document.getElementById("modeimg");
+        var email = document.getElementById("email-logo");
+        var github = document.getElementById("github-logo");
+        var linkedin = document.getElementById("linkedin-logo");
+
+        elem.dataset.bsTheme =
+          elem.dataset.bsTheme === "light" ? "dark" : "light";
+        mod.className = elem.dataset.bsTheme === "light" ? "bi bi-moon-fill" : "bi bi-brightness-high-fill";
+        mod.title = elem.dataset.bsTheme === "light" ? "Dark Mode" : "Light Mode";
+        email.src =
+          elem.dataset.bsTheme === "dark"
+            ? "/static/IMG/email-l.png"
+            : "/static/IMG/email.png";
+        github.src =
+          elem.dataset.bsTheme === "dark"
+            ? "/static/IMG/github-l.png"
+            : "/static/IMG/github.png";
+        linkedin.src =
+          elem.dataset.bsTheme === "dark"
+            ? "/static/IMG/linkedin-l.png"
+            : "/static/IMG/linkedin.png";
+
+        localStorage.setItem("modePreference", elem.dataset.bsTheme);
+      }
+    </script>
+  </head>
+  <body>
+    <nav class="navbar p-2 sticky-top navbar-expand-lg bg-body-secondary">
+      <div class="container-fluid">
+        <a href="/" class="d-flex align-items-center text-decoration-none">
+          <img
+            src="/static/IMG/logo.png"
+            width="35"
+            height="35"
+            alt="logo"
+            id="logo"
+            role="button"
+            style="margin-right: 15px"
+          />
+          <span class="navbar-brand fw-bold">Med-Help</span>
+        </a>
+        
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <div id="options">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active fw-medium" aria-current="page" href="/"
+                  >Home</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link fw-medium" href="about">About</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle fw-medium"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Features
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="diabetes">Diabetes Prediction</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="breastcancer"
+                      >Breast Cancer Prediction</a
+                    >
+                  </li>
+                  <li><a class="dropdown-item" href="bmi">BMI Calculator</a></li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <a class="dropdown-item" href="#"
+                      >What are you searching for?</a
+                    >
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div
+            class="d-flex flex-row justify-content-center align-items-center ms-3"
+            id="themeselect"
+          >
+            <i 
+              id="modeimg" 
+              class="bi bi-brightness-high-fill theme-toggle" 
+              onclick="toggleTheme()" 
+              title="Light Mode"
+              style="font-size: 1.2rem;"
+            ></i>
+          </div>
+        </div>
+      </div>
+    </nav>
+    
+    <div class="alert alert-primary alert-dismissible fade show m-3" role="alert">
+      <strong>Hey!</strong> This website is under development, so all the
+      features may not be available. Thanks for visiting!
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+      ></button>
+    </div>
+    
+    <section class="hero-section text-center">
+      <div class="container">
+        <h1 class="display-4 fw-bold mb-3">Your Health Companion</h1>
+        <p class="lead mb-4">Advanced predictive tools to help you monitor and understand your health risks</p>
+        <a href="#features" class="btn btn-light btn-lg px-4">Explore Features</a>
+      </div>
+    </section>
+    
+    <h2 class="text-center mb-4 fw-bold" id="features">Our Health Tools</h2>
+    
+    <div class="features-container mb-5">
+      <div class="card feature-card shadow-sm">
+        <img
+          src="/static/IMG/db.png"
+          class="card-img-top"
+          alt="Diabetes Prediction"
+        />
+        <div class="card-body text-center">
+          <i class="bi bi-droplet-half feature-icon"></i>
+          <h5 class="card-title fw-bold">Diabetes Prediction</h5>
+          <p class="card-text">
+            Using Machine Learning to forecast diabetes risk using data
+            analysis. It helps with early detection and pro-active health
+            management.
+          </p>
+          <a href="diabetes" class="btn btn-primary mt-2">Predict Now</a>
+        </div>
+      </div>
+      
+      <div class="card feature-card shadow-sm">
+        <img
+          src="/static/IMG/bc.png"
+          class="card-img-top"
+          alt="Breast Cancer Prediction"
+        />
+        <div class="card-body text-center">
+          <i class="bi bi-heart-pulse feature-icon"></i>
+          <h5 class="card-title fw-bold">Breast Cancer Prediction</h5>
+          <p class="card-text">
+            Machine Learning utilizes data analysis and predictive algorithms
+            to assess an individual's risk of breast cancer.
+          </p>
+          <a href="breastcancer" class="btn btn-primary mt-2">Assess Risk</a>
+        </div>
+      </div>
+      
+      <div class="card feature-card shadow-sm">
+        <img
+          src="/static/IMG/bmi.png"
+          class="card-img-top"
+          alt="BMI Calculator"
+        />
+        <div class="card-body text-center">
+          <i class="bi bi-speedometer2 feature-icon"></i>
+          <h5 class="card-title fw-bold">BMI Calculator</h5>
+          <p class="card-text">
+            A Body Mass Index Calculator is a tool to assess your body weight
+            and health status, helping you make informed decisions about your
+            fitness and well-being.
+          </p>
+          <a href="bmi" class="btn btn-primary mt-2">Calculate BMI</a>
+        </div>
+      </div>
+    </div>
+    
+    <footer class="bg-body-secondary mt-5">
+      <div class="container">
+        <div class="quote-card p-4 mb-4 text-center">
+          <blockquote class="blockquote mb-0">
+            <p class="fs-4 fst-italic">
+              "Health is the greatest possession. Contentment is the greatest
+              treasure. Confidence is the greatest friend"
+            </p>
+            <footer class="blockquote-footer mt-3">
+              <cite title="Source Title"><strong>Albert Schweitzer</strong></cite>
+            </footer>
+          </blockquote>
+        </div>
+        
+        <div class="footer-card p-4 mb-4 text-center">
+          <div class="card-body">
+            <h5 class="card-title fw-bold">Rehan Ansari</h5>
+            <p class="card-text">B.tech Undergrad Student from India.</p>
+            <div class="d-flex justify-content-center mt-3">
+              <a
+                class="link-underline link-underline-opacity-0 mx-3"
+                href="mailto:mudabbirrehan17@gmail.com"
+                target="_blank"
+              >
+                <img
+                  class="social-icon"
+                  id="email-logo"
+                  role="button"
+                  src="/static/IMG/email-l.png"
+                  height="30px"
+                  alt="email"
+                />
+              </a>
+              <a
+                class="link-underline link-underline-opacity-0 mx-3"
+                href="https://github.com/RehanAnsari17"
+                target="_blank"
+              >
+                <img
+                  class="social-icon"
+                  id="github-logo"
+                  role="button"
+                  src="/static/IMG/github-l.png"
+                  height="30px"
+                  alt="github"
+                />
+              </a>
+              <a
+                class="link-underline link-underline-opacity-0 mx-3"
+                href="www.linkedin.com/in/mudabbir-rehan-ansari-623b9a28b"
+                target="_blank"
+              >
+                <img
+                  class="social-icon"
+                  id="linkedin-logo"
+                  role="button"
+                  src="/static/IMG/linkedin-l.png"
+                  height="30px"
+                  alt="linkedin"
+                />
+              </a>
+            </div>
+          </div>
+          <div class="card-footer text-body-secondary">
+            Made with ❤️ by @author:Sharmi Sannigrahi
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
